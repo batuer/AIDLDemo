@@ -1,4 +1,4 @@
-package com.jj.tt.aidlclient;
+package com.gusi.client1;
 
 import android.content.ComponentName;
 import android.content.Context;
@@ -17,8 +17,8 @@ import android.widget.EditText;
 import com.jj.tt.aidlserver.BookCallBack;
 import com.jj.tt.aidlserver.IBookService;
 
-
 public class MainActivity extends AppCompatActivity {
+
 
     private boolean isConnectService = false;
     private IBookService iBookService = null;
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
     private ServiceConnection serviceConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
-            Log.w("Fire",
+            Log.w("FireYlw",
                     (Looper.myLooper() == Looper.getMainLooper()) + " : connected:" + Thread.currentThread() + " : " + Looper.myLooper());
             iBookService = IBookService.Stub.asInterface(service);
 
@@ -59,14 +59,14 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onServiceDisconnected(ComponentName name) {
-            Log.w("Fire",
+            Log.w("FireYlw",
                     (Looper.myLooper() == Looper.getMainLooper()) + " : Disconnected: " + Thread.currentThread());
             isConnectService = false;
         }
 
         @Override
         public void onBindingDied(ComponentName name) {
-            Log.w("Fire",
+            Log.w("FireYlw",
                     "MainActivity:68行:" + (Looper.myLooper() == Looper.getMainLooper()) + " : onBindingDied : " + Thread.currentThread() + " : " + name);
         }
     };
@@ -76,27 +76,27 @@ public class MainActivity extends AppCompatActivity {
     private final BookCallBack.Stub bookCallBack = new BookCallBack.Stub() {
         @Override
         public void getCount(final int count) throws RemoteException {
-            Log.w("Fire",
+            Log.w("FireYlw",
                     "MainActivity:68行:" + Thread.currentThread() + " : " + (Looper.myLooper() == Looper.getMainLooper()));
         }
 
         @Override
         public void get4BookName(String bookName) throws RemoteException {
-            Log.w("Fire",
+            Log.w("FireYlw",
                     "MainActivity:74行:" + Thread.currentThread() + " : " + (Looper.myLooper() == Looper.getMainLooper()));
 
         }
 
         @Override
         public void get3BookName(String bookName) throws RemoteException {
-            Log.w("Fire",
+            Log.w("FireYlw",
                     "MainActivity:82行:" + Thread.currentThread() + " : " + (Looper.myLooper() == Looper.getMainLooper()));
 
         }
 
         @Override
         public void get5BookName(String bookName) throws RemoteException {
-            Log.w("Fire",
+            Log.w("FireYlw",
                     "MainActivity:89行:" + Thread.currentThread() + " : " + (Looper.myLooper() == Looper.getMainLooper()));
 
         }
@@ -123,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             iBookService.get1(time);
         } catch (RemoteException e) {
-            Log.e("Fire", "MainActivity:111行:" + e.toString());
+            Log.e("FireYlw", "MainActivity:111行:" + e.toString());
         }
     }
 
@@ -140,9 +140,9 @@ public class MainActivity extends AppCompatActivity {
                     }
                     try {
                         String block = iBookService.getBlock(time);
-                        Log.w("Fire", finalI + "MainActivity:132行:" + block);
+                        Log.w("FireYlw", finalI + "MainActivity:132行:" + block);
                     } catch (RemoteException e) {
-                        Log.e("Fire", "MainActivity:119行:" + e.toString());
+                        Log.e("FireYlw", "MainActivity:119行:" + e.toString());
                     }
                 }
             }).start();

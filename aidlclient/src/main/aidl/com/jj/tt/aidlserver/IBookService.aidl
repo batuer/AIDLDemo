@@ -14,7 +14,7 @@ interface IBookService {
     void addOutBook(out Book book);
 
     void addInOutBook(inout Book book);
-    
+
     void get4BookName();
 
     void get3BookName();
@@ -22,4 +22,7 @@ interface IBookService {
     void registerCallback(BookCallBack bc);
 
     void unregisterCallback(BookCallBack bc);
+
+    String getBlock(int time);
+    void get1(int time);
 }

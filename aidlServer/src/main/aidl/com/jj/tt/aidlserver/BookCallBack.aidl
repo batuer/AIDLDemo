@@ -6,6 +6,6 @@ package com.jj.tt.aidlserver;
 interface BookCallBack {
 
     void getCount(int count);
-    void get4BookName(String bookName);//获取集合第四个元素书名
-    void get3BookName(String bookName);//获取已经删除的第三个元素书名
+    void get4BookName(String bookName);
+    void get3BookName(String bookName);
 }
