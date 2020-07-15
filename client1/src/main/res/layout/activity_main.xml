@@ -16,7 +16,7 @@
             android:layout_width="40dp"
             android:layout_height="50dp"
             android:gravity="center"
-            android:hint="10"
+            android:hint="15"
             android:inputType="number" />
 
         <Button
@@ -42,6 +42,18 @@
             android:layout_height="wrap_content"
             android:onClick="get"
             android:text="get" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="Thread"
+            android:text="16Thread" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="Main"
+            android:text="Main" />
 
 
     </LinearLayout>

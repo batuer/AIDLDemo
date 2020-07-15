@@ -127,25 +127,44 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void getString(View view) {
-        for (int i = 0; i < 32; i++) {
-            final int finalI = i;
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    String trim = mEt.getText().toString().trim();
-                    int time = 10;
-                    if (!TextUtils.isEmpty(trim)) {
-                        time = Integer.parseInt(trim);
-                    }
-                    try {
-                        String block = iBookService.getBlock(time);
-                        Log.w("Fire", finalI + "MainActivity:132行:" + block);
-                    } catch (RemoteException e) {
-                        Log.e("Fire", "MainActivity:119行:" + e.toString());
-                    }
-                }
-            }).start();
+    public void getString(final View view) {
+        view.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Log.w("Fire", "MainActivity:134行:---------" );
+                mEt.setText("31000");
+            }
+        }, 1000);
+        String trim = mEt.getText().toString().trim();
+        int time = 10;
+        if (!TextUtils.isEmpty(trim)) {
+            time = Integer.parseInt(trim);
         }
+        try {
+            Log.w("Fire", "MainActivity:137行:-");
+            String block = iBookService.getBlock(time);
+            Log.w("Fire", "MainActivity:132行:" + block);
+        } catch (RemoteException e) {
+            Log.e("Fire", "MainActivity:119行:" + e.toString());
+        }
+//        for (int i = 0; i < 32; i++) {
+//            final int finalI = i;
+//            new Thread(new Runnable() {
+//                @Override
+//                public void run() {
+//                    String trim = mEt.getText().toString().trim();
+//                    int time = 10;
+//                    if (!TextUtils.isEmpty(trim)) {
+//                        time = Integer.parseInt(trim);
+//                    }
+//                    try {
+//                        String block = iBookService.getBlock(time);
+//                        Log.w("Fire", finalI + "MainActivity:132行:" + block);
+//                    } catch (RemoteException e) {
+//                        Log.e("Fire", "MainActivity:119行:" + e.toString());
+//                    }
+//                }
+//            }).start();
+//        }
     }
 }

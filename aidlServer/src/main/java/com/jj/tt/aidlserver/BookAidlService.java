@@ -9,6 +9,7 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.RemoteCallbackList;
 import android.os.RemoteException;
+import android.os.SystemClock;
 import android.util.Log;
 
 import java.text.SimpleDateFormat;
@@ -38,6 +39,8 @@ public class BookAidlService extends Service {
     @Override
     public IBinder onBind(Intent intent) {
         // TODO: Return the communication channel to the service.
+        IBookService.Stub iBookService = this.mIBookService;
+        Log.w("Fire", "BookAidlService:42行:" + iBookService);
         return iBookService;
     }
 
@@ -50,8 +53,9 @@ public class BookAidlService extends Service {
         }
     }
 
-    private final RemoteCallbackList<BookCallBack> RemoteCallbackList = new RemoteCallbackList<>();
-    private final IBookService.Stub iBookService = new IBookService.Stub() {
+    private final RemoteCallbackList<BookCallBack> mRemoteCallbackList = new RemoteCallbackList<>();
+
+    private final IBookService.Stub mIBookService = new IBookService.Stub() {
         @Override
         public List<Book> getBookList() throws RemoteException {
             return bookList;
@@ -95,16 +99,17 @@ public class BookAidlService extends Service {
         @Override
         public void registerCallback(BookCallBack bc) throws RemoteException {
             //获取回调对象
-            RemoteCallbackList.register(bc);
+            mRemoteCallbackList.register(bc);
             if (isCount) {
                 startCount();
             }
+
         }
 
         @Override
         public void unregisterCallback(BookCallBack bc) throws RemoteException {
             //注销回调对象
-            RemoteCallbackList.unregister(bc);
+            mRemoteCallbackList.unregister(bc);
         }
 
         @Override
@@ -125,22 +130,33 @@ public class BookAidlService extends Service {
         public void get1(int time) throws RemoteException {
             Log.w("Fire",
                     "BookAidlService:125行:" + Thread.currentThread() + " : " + Binder.getCallingPid() + " : " + Binder.getCallingUid());
+            if (true) {
+                throw new RuntimeException("Ylw-----");
+            }
             try {
                 Thread.sleep(time * 1000);
             } catch (InterruptedException e) {
                 Log.e("Fire", "BookAidlService:130行:" + e.toString());
             }
         }
+
+        @Override
+        public void block(String name, int time) throws RemoteException {
+            Log.w(TAG, name + " : -- : " + time + " : -- : " + Thread.currentThread().getName());
+            SystemClock.sleep(time * 1000);
+            Log.e(TAG, name + " : -- : " + time + " : -- : " + Thread.currentThread().getName());
+        }
     };
 
+
     private void query4Book() {
-        int N = RemoteCallbackList.beginBroadcast();
+        int N = mRemoteCallbackList.beginBroadcast();
         if (bookList.size() >= 4) {
             for (int i = 0; i <= bookList.size(); i++) {
                 if (i == 3) {
                     try {
                         for (int j = 0; j < N; j++) {
-                            RemoteCallbackList.getBroadcastItem(j).
+                            mRemoteCallbackList.getBroadcastItem(j).
                                     get4BookName(bookList.get(i).getName());
                         }
                     } catch (RemoteException e) {
@@ -151,24 +167,24 @@ public class BookAidlService extends Service {
         } else {
             try {
                 for (int j = 0; j < N; j++) {
-                    RemoteCallbackList.getBroadcastItem(j).
+                    mRemoteCallbackList.getBroadcastItem(j).
                             get4BookName("不存在该书");
                 }
             } catch (RemoteException e) {
                 Log.e(TAG, "jjyh", e);
             }
         }
-        RemoteCallbackList.finishBroadcast();
+        mRemoteCallbackList.finishBroadcast();
     }
 
     private void query3Book() {
-        int N = RemoteCallbackList.beginBroadcast();
+        int N = mRemoteCallbackList.beginBroadcast();
         if (bookList.size() >= 3) {
             for (int i = 0; i <= bookList.size(); i++) {
                 if (i == 2) {
                     try {
                         for (int j = 0; j < N; j++) {
-                            RemoteCallbackList.getBroadcastItem(j).
+                            mRemoteCallbackList.getBroadcastItem(j).
                                     get3BookName(bookList.get(i).getName());
                             bookList.remove(i);
                         }
@@ -180,14 +196,14 @@ public class BookAidlService extends Service {
         } else {
             try {
                 for (int j = 0; j < N; j++) {
-                    RemoteCallbackList.getBroadcastItem(j).
+                    mRemoteCallbackList.getBroadcastItem(j).
                             get3BookName("书籍低于三本");
                 }
             } catch (RemoteException e) {
                 Log.e(TAG, "jjyh", e);
             }
         }
-        RemoteCallbackList.finishBroadcast();
+        mRemoteCallbackList.finishBroadcast();
     }
 
     private void startCount() {
@@ -212,14 +228,14 @@ public class BookAidlService extends Service {
     }
 
     private void callBack(int info) {
-        int N = RemoteCallbackList.beginBroadcast();
+        int N = mRemoteCallbackList.beginBroadcast();
         try {
             for (int i = 0; i < N; i++) {
-                RemoteCallbackList.getBroadcastItem(i).getCount(info);
+                mRemoteCallbackList.getBroadcastItem(i).getCount(info);
             }
         } catch (RemoteException e) {
             Log.e(TAG, "", e);
         }
-        RemoteCallbackList.finishBroadcast();
+        mRemoteCallbackList.finishBroadcast();
     }
 }

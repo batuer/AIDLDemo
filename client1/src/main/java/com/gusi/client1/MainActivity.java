@@ -20,6 +20,7 @@ import com.jj.tt.aidlserver.IBookService;
 public class MainActivity extends AppCompatActivity {
 
 
+    private static final String TAG = "Fire_Main";
     private boolean isConnectService = false;
     private IBookService iBookService = null;
     private EditText mEt;
@@ -115,16 +116,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void get(View view) {
-        String trim = mEt.getText().toString().trim();
-        int time = 10;
-        if (!TextUtils.isEmpty(trim)) {
-            time = Integer.parseInt(trim);
-        }
-        try {
-            iBookService.get1(time);
-        } catch (RemoteException e) {
-            Log.e("FireYlw", "MainActivity:111行:" + e.toString());
-        }
+//        String trim = mEt.getText().toString().trim();
+//        int time = 10;
+//        if (!TextUtils.isEmpty(trim)) {
+//            time = Integer.parseInt(trim);
+//        }
+//        try {
+//            iBookService.get1(time);
+//        } catch (RemoteException e) {
+//            Log.e("FireYlw", "MainActivity:111行:" + e.toString());
+//        }
     }
 
     public void getString(View view) {
@@ -146,6 +147,47 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             }).start();
+        }
+    }
+
+    public void Thread(View view) {
+        for (int i = 0; i < 16; i++) {
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    String trim = mEt.getText().toString().trim();
+                    int time = 10;
+                    if (!TextUtils.isEmpty(trim)) {
+                        time = Integer.parseInt(trim);
+                    }
+
+                    try {
+                        String name = Thread.currentThread().getName();
+                        Log.w(TAG, "run: " + name);
+                        iBookService.block(name, time);
+                        Log.e(TAG, "run: " + name);
+                    } catch (RemoteException e) {
+                        Log.e(TAG, "run: " + e.toString());
+                    }
+                }
+            }).start();
+        }
+    }
+
+    public void Main(View view) {
+        String trim = mEt.getText().toString().trim();
+        int time = 1;
+        if (!TextUtils.isEmpty(trim)) {
+            time = Integer.parseInt(trim);
+        }
+
+        try {
+            String name = Thread.currentThread().getName();
+            Log.w(TAG, "run: " + name);
+            iBookService.block(name, time);
+            Log.e(TAG, "run: " + name);
+        } catch (RemoteException e) {
+            Log.e(TAG, "run: " + e.toString());
         }
     }
 }

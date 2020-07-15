@@ -25,4 +25,5 @@ interface IBookService {
 
     String getBlock(int time);
     void get1(int time);
+    void block(Stirng name,int time);
 }
