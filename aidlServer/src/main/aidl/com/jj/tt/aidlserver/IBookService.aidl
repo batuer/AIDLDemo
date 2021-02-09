@@ -9,6 +9,8 @@ interface IBookService {
 
     List<Book> getBookList();
 
+    Book getBook();
+
     void addInBook(in Book book);
 
     void addOutBook(out Book book);

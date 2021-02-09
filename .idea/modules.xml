@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/AIDLDemo.iml" filepath="$PROJECT_DIR$/AIDLDemo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/aidlServer/AIDLDemo-aidlServer.iml" filepath="$PROJECT_DIR$/aidlServer/AIDLDemo-aidlServer.iml" group="AIDLDemo/aidlServer" />
-      <module fileurl="file://$PROJECT_DIR$/aidlclient/AIDLDemo-aidlclient.iml" filepath="$PROJECT_DIR$/aidlclient/AIDLDemo-aidlclient.iml" group="AIDLDemo/aidlclient" />
-      <module fileurl="file://$PROJECT_DIR$/aidlServer/aidlServer.iml" filepath="$PROJECT_DIR$/aidlServer/aidlServer.iml" />
-      <module fileurl="file://$PROJECT_DIR$/aidlclient/aidlclient.iml" filepath="$PROJECT_DIR$/aidlclient/aidlclient.iml" />
-      <module fileurl="file://$PROJECT_DIR$/client1/client1.iml" filepath="$PROJECT_DIR$/client1/client1.iml" group="AIDLDemo/client1" />
-      <module fileurl="file://$PROJECT_DIR$/project-AIDLDemo.iml" filepath="$PROJECT_DIR$/project-AIDLDemo.iml" group="AIDLDemo" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/AIDLDemo.iml" filepath="$PROJECT_DIR$/.idea/modules/AIDLDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/aidlServer/AIDLDemo.aidlServer.iml" filepath="$PROJECT_DIR$/.idea/modules/aidlServer/AIDLDemo.aidlServer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/aidlclient/AIDLDemo.aidlclient.iml" filepath="$PROJECT_DIR$/.idea/modules/aidlclient/AIDLDemo.aidlclient.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/client1/AIDLDemo.client1.iml" filepath="$PROJECT_DIR$/.idea/modules/client1/AIDLDemo.client1.iml" />
     </modules>
   </component>
 </project>
