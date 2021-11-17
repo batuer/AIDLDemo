@@ -1,0 +1,7 @@
+# ninja log v5
+0	655	658860517	CMakeFiles/native-lib.dir/native-lib.cpp.o	9d89728886050e31
+656	727	658860517	D:/project/AIDLDemo/app/build/intermediates/cmake/debug/obj/arm64-v8a/libnative-lib.so	fef3e6385da5aa13
+2	302	658861011	CMakeFiles/native-lib.dir/native-lib.cpp.o	9d89728886050e31
+302	370	658861011	D:/project/AIDLDemo/app/build/intermediates/cmake/debug/obj/arm64-v8a/libnative-lib.so	fef3e6385da5aa13
+2	319	658861168	CMakeFiles/native-lib.dir/native-lib.cpp.o	9d89728886050e31
+319	385	658861168	D:/project/AIDLDemo/app/build/intermediates/cmake/debug/obj/arm64-v8a/libnative-lib.so	fef3e6385da5aa13

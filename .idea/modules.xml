@@ -3,9 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/AIDLDemo.iml" filepath="$PROJECT_DIR$/.idea/modules/AIDLDemo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/aidlServer/AIDLDemo.aidlServer.iml" filepath="$PROJECT_DIR$/.idea/modules/aidlServer/AIDLDemo.aidlServer.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/aidlclient/AIDLDemo.aidlclient.iml" filepath="$PROJECT_DIR$/.idea/modules/aidlclient/AIDLDemo.aidlclient.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/client1/AIDLDemo.client1.iml" filepath="$PROJECT_DIR$/.idea/modules/client1/AIDLDemo.client1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/AIDLDemo.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/AIDLDemo.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/client/AIDLDemo.client.iml" filepath="$PROJECT_DIR$/.idea/modules/client/AIDLDemo.client.iml" />
     </modules>
   </component>
 </project>

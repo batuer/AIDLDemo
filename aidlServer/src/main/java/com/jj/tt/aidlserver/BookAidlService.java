@@ -140,9 +140,6 @@ public class BookAidlService extends Service {
     public void get1(int time) throws RemoteException {
       Log.w("Fire",
           "BookAidlService:125行:" + Thread.currentThread() + " : " + Binder.getCallingPid() + " : " + Binder.getCallingUid());
-      if (true) {
-        throw new RuntimeException("Ylw-----");
-      }
       try {
         Thread.sleep(time * 1000);
       } catch (InterruptedException e) {

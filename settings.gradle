@@ -1,2 +1,2 @@
-include ':aidlServer', ':aidlclient'
-include ':client1'
+include ':client'
+include ':app'
